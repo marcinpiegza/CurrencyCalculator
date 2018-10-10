@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<div id="demo">
+    <button type="kliknij mnie" onclick="loadDoc()">Kliknij mnie</button>
+</div>
+
+do napisania
+// input (content)
+
+<script>
+    $('#contentInputId').val("content"));
+
+    $('#touchMeId').click(funtion(){
+        alert("kliknij mnie");
+    });
+
+    console.log($('#contentInputId').val());
+
+
+
+    //zapytanie ajaxowe
+    $.ajax({
+            //ta linijka to to co wysyłąmy JQUERT
+        type: "GET",
+        url: "exchange" + enteredBalue + "/" + enteredDate,
+        //enteredBalue - ile spisujemy hajsy
+        //enteredDate - data dla ktorej szukamy
+        headers: {
+            // mozna to pominac
+
+            //akceptuje jsona
+        'Accept':'applucation/json',
+            //wysyłam cos w postaci jsona
+            'Content-Type': 'applucation/json'
+        },
+        date:{
+              id: 5
+              color: blue
+        },
+            //ta linijka to to co dostajemy w odpowiedzi czyli REST
+        success: function(result){
+            $('#currencyExchangeInput').val(result.value());
+        }
+        },
+        erroe:  function(result){
+        console.log(result);
+
+    }
+
+
+    )
+</script>
 </body>
 </html>
