@@ -2,8 +2,10 @@ package pl.project.calculator.model;
 
 import javafx.util.converter.BigDecimalStringConverter;
 
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 
+@Entity
 public class Currency {
 
     private String currency;
