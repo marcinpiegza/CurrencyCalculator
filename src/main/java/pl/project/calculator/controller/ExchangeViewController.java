@@ -1,4 +1,4 @@
-package pl.project.calculator;
+package pl.project.calculator.controller.;
 
 public class ExchangeViewController {
 }
