@@ -26,15 +26,15 @@ public class ExchangeController {
     @Autowired
     CurrencyExchangeService currencyExchangeService;
 
-    @GetMapping("/exchange/(value}/{date}/")
-    public ResponseEntity<Class<CurrencyExchangeService>> getExchangeRate(@PathVariable(name = "date")
-             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate exchangeDate, BigDecimal value) {
+    @GetMapping("/exchange/{value}/{date}/{code}")
+    public ResponseEntity<Class<CurrencyExchangeService>> getExchangeRate(
+    @PathVariable(name = "value") BigDecimal value,@PathVariable(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate exchangeDate,
+    @PathVariable(name = "code")String code) {
 
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-                 //w taki obiekt mamy opanowac finalny wynik wraz ze statusem httpStatus
-     //bo to jest fajny wraper do opanowywania restowych wyników
-//   }
+
+
 
 }

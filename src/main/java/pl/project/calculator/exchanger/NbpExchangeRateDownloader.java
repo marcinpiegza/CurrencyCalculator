@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.project.calculator.model.Currency;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 public class NbpExchangeRateDownloader {
 
@@ -14,12 +17,14 @@ public class NbpExchangeRateDownloader {
     RestTemplate restTemplate;
 
 
+    public NbpExchangeRateResult downloadExchangeRate() {
 
+        Map<String, String> params = new HashMap<String, String>();
+        NbpExchangeRateResult result = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/rates/A/{code}/{date}/"
+                , NbpExchangeRateResult.class, params);
 
-    public NbpExchangeRateResult downloadExchangeRate (){
+        // restTemplate.postForObject();
 
-       NbpExchangeRateResult result = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/rates/A/{code}/{date}/", NbpExchangeRateResult.class );
-
-    return result;
+        return result;
     }
 }
