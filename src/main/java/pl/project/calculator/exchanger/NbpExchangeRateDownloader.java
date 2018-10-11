@@ -12,7 +12,7 @@ public class NbpExchangeRateDownloader {
 
     @Autowired
     RestTemplate restTemplate;
-   // RestTemplate restTemplate = new RestTemplate();
+
 
 
 
