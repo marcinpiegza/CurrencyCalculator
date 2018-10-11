@@ -2,6 +2,8 @@ package pl.project.calculator.model;
 
 import org.springframework.http.HttpStatus;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
 public class ExchangeResult {

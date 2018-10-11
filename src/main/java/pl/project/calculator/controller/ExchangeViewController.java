@@ -8,6 +8,6 @@ public class ExchangeViewController {
 
     @GetMapping("/")
     public String displayMainView(){
-        return "index.html";
+        return "index.jsp";
     }
 }

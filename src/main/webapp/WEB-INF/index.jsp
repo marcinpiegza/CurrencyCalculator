@@ -8,31 +8,38 @@
 <body>
 
 
-<div id="contener">
+<div class="contener">
 
-    <button type="kliknij mnie" onclick="loadDoc()">Kliknij mnie</button>
+    <button type="Przelicz" onclick="loadDoc()">Przelicz</button>
 
     <div class="form-group">
-        <label for="money">Money</label>
-        <input type="text" class="form-control" id="money">
+        <label for="enteredValue">Money</label>
+        <input type="text" class="form-control" id="enteredValue">
     </div>
 
     <div class="form-group row">
-        <label for="Date" class="col-2 col-form-label">Date</label>
+        <label for="enteredDate" class="col-2 col-form-label">Date</label>
         <div class="col-10">
-            <input class="form-control" type="date" value="2011-08-19" id="Date">
+            <input class="form-control" type="date" value="2011-08-19" id="enteredDate">
         </div>
     </div>
 
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Country
+            currenty
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <tbody>
+            <c:forEach var="exchangeResult" items="${requestScope.books }" varStatus="loop">
+                <tr>
+                    <th scope="row">${loop.index + 1}</th>
+                    <td>${book.title}</td>
+                    <td>${not empty book.borrowerName ? book.borrowerName : '-'}</td>
+                    <td><input class="form-check-input" type="radio" name="bookId" value="${book.id}" checked></td>
+                </tr>
+            </c:forEach>
+            </tbody>
         </div>
     </div>
 
@@ -45,7 +52,7 @@
     $('#contentInputId').val("content"));
 
     $('#touchMeId').click(funtion(){
-        alert("kliknij mnie");
+        alert("Przelicz");
     });
 
     console.log($('#contentInputId').val());
@@ -68,7 +75,7 @@
             'Content-Type': 'applucation/json'
         },
         date:{
-              id: 5,
+
         },
 
 
