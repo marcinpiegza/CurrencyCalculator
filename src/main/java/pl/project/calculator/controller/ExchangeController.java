@@ -23,12 +23,6 @@ import java.util.Date;
 public class ExchangeController {
 
 
-    //przy parzowaniu daty musimy springowi powiedziec o formacie ISO  czyli napisac iso= DateTimeFormat.ISO.DATE
-
-    // albo wysyłąmy wszystkie parametry @PathVariable lub robimy jeden obiekt @RequestBody MyObject object
-    //wiec do musi to sami przemyslec
-
-    //to powinno kierowac do serwisu ale  nie wiem czy działa
     @Autowired
     CurrencyExchangeService currencyExchangeService;
 
