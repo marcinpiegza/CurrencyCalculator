@@ -1,6 +1,29 @@
 package pl.project.calculator.exchanger;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+@JsonIgnoreProperties(ignoreUnknown =true)
 public class NbpExchangeRateSeries {
 
-    // tutaj robimy zwykły obiekt bez adnotacji taki jak nam zwraca API NBP
+
+    public String currency;
+    public String code;
+    public List<NbpExchangeRate> rates;
+
+    @Override
+    public String toString() {
+        return "NbpExchangeRateSeries{" +
+                "currency='" + currency + '\'' +
+                ", Code='" + code + '\'' +
+                ", rates=" + rates +
+                '}';
+    }
+
+
 }
