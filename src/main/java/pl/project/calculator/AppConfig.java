@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 
     @Configuration
-    @ComponentScan("pl.project.calculator")
     public class AppConfig {
 
         @Bean
