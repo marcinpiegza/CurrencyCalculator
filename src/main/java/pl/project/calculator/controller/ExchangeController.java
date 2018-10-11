@@ -34,6 +34,15 @@ public class ExchangeController {
     public ResponseEntity<Class<CurrencyExchangeService>> getExchangeRate(
     @PathVariable(name = "value") BigDecimal value,@PathVariable(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate exchangeDate,
     @PathVariable(name = "code")String code) {
+//      1. odbieramy wartosci (value, date i currency)
+//        2. wstrzykujemy w exchnge controller service bo chcemy je przekazac do servisu
+//            3. w currency exahange service wstrzykujemy nbp exchange downoloader
+//                4. do nbp exchange downoloaderprzekazujemy date i walute(wartosci nie bo jąliczymy w serwisie)
+//        5. w nbp exchange downoloader wstzukyjemy rest tempplate
+//                6. majac wynik wracamy do currency exchange servise(typem zwracamyn bedzie obiekt ktory bedzie zawierał rating i error message(typ string))
+//            i w momencie jak nie bedzie błedu uzupełniamy rating lub error , dodac boolena ktory nam powie czy jest ok czy nie
+//                jak jest ok to wyciagamy stawke rate i dzielimy ją
+//               7. nastepnie mamy wynik
 
 
         return new ResponseEntity<>(HttpStatus.OK);
