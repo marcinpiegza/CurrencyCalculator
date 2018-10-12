@@ -22,6 +22,13 @@ public class CurrencyExchangeService {
         nbpExchangeRateDownloader.downloadExchangeRate(code,exchangeDate);
 
 
+        nbpExchangeRateDownloader.downloadExchangeRate(exchangeDate,code,);
+
+if(tak){
+   // zwracamy obiekt exhange result
+} else {
+   // zwracamy erroe ze nie udało sie
+}
 
         return null;
     }

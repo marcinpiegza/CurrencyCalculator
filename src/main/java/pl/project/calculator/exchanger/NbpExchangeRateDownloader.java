@@ -22,7 +22,7 @@ public class NbpExchangeRateDownloader {
 
         Map<String, String> params = new HashMap<>();
         params.put("code", code);
-        params.put("date", exchangeDate.toString());
+                 params.put("date", exchangeDate.toString());
 
         NbpExchangeRateSeries result = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/rates/A/{code}/{date}/"
                 ,NbpExchangeRateSeries.class, params);

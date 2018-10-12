@@ -35,6 +35,11 @@ public class ExchangeController {
     @PathVariable(name = "value") BigDecimal value,@PathVariable(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate exchangeDate,
     @PathVariable(name = "code")String code) {
 
+
+//      1. odbieramy wartosci (value, date i currency)   gotowe
+//        2. wstrzykujemy w exchnge controller service bo chcemy je przekazac do servisu gotowe
+//            3. w currency exahange service wstrzykujemy nbp exchange downoloader gotowe
+
         currencyExchangeService.calculate(value,exchangeDate,code);
 
 
