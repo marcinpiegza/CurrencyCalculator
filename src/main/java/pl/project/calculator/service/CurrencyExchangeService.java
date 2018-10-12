@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import pl.project.calculator.exchanger.NbpExchangeRateDownloader;
 import pl.project.calculator.exchanger.NbpExchangeRateResult;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Service
 public class CurrencyExchangeService {
 
@@ -15,8 +18,9 @@ public class CurrencyExchangeService {
         this.nbpExchangeRateDownloader = nbpExchangeRateDownloader;
     }
 
-    private NbpExchangeRateResult calculate() {
-        nbpExchangeRateDownloader.downloadExchangeRate();
+    public NbpExchangeRateResult calculate(BigDecimal value, LocalDate exchangeDate, String code) {
+        nbpExchangeRateDownloader.downloadExchangeRate(code,exchangeDate);
+
 
 
         return null;

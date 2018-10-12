@@ -4,21 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 public class NbpExchangeRate {
 
-
     private String no;
-    private String localDate;
+    private LocalDate effectiveDate;
     private BigDecimal mid;
-
-    public NbpExchangeRate(String no, String localDate, BigDecimal mid) {
-        this.no = no;
-        this.localDate = localDate;
-        this.mid = mid;
-    }
 }
 
 
