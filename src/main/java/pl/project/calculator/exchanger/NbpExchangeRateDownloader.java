@@ -17,6 +17,7 @@ public class NbpExchangeRateDownloader {
     public NbpExchangeRateResult downloadExchangeRate() {
 
         Map<String, String> params = new HashMap<>();
+
         NbpExchangeRateResult result = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/rates/A/{code}/{date}/"
                 , NbpExchangeRateResult.class, params);
 
