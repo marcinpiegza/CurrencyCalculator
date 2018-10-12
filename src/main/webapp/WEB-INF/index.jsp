@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ExchangeCurrency</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.3/css/bootstrap.css">
     <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
@@ -19,7 +19,7 @@
 <div class="form-group row">
     <label for="enteredDate" class="col-2 col-form-label">Date</label>
     <div class="col-10">
-        <input class="form-control" type="date" value="2011-08-19" id="enteredDate">
+        <input class="form-control" type="date"  id="enteredDate">
     </div>
 </div>
 
@@ -33,7 +33,7 @@
         <option>CNY</option>
     </select>
     <label for="ExampleInputPLN">Wartość w GBP:</label>
-    <input type="number" class="form-control" id="ExampleInputGBP" placeholder="GBP">
+    <input type="number" class="form-control" id="ExampleInputGBP" placeholder="GBP" disabled>
 </div>
 
 
@@ -55,7 +55,7 @@
         $.ajax({
             //ta linijka to to co wysyłąmy JQUERT
             type: "GET",
-            url: "/exchange",
+            url: "/exchange/",
             //enteredvalue - ile spisujemy hajsu
             //enteredDate - data dla ktorej szukamy
             headers: {
@@ -81,8 +81,7 @@
 
             // error:  function(result){
 
-    });
-    )
+    })});
 </script>
 </body>
 </html>
