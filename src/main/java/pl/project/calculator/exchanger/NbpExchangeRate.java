@@ -13,6 +13,8 @@ public class NbpExchangeRate {
     private String no;
     private LocalDate effectiveDate;
     private BigDecimal mid;
+
+
 }
 
 
