@@ -13,6 +13,8 @@ public class NbpExchangeRateDownloader {
     @Autowired
     RestTemplate restTemplate ;
 
+    @Autowired
+    NbpExchangeRateSeries nbpExchangeRateSeries;
 
     public NbpExchangeRateResult downloadExchangeRate() {
 
@@ -21,6 +23,8 @@ public class NbpExchangeRateDownloader {
                 , NbpExchangeRateResult.class, params);
 
         // restTemplate.postForObject();
+
+        //zwraca tez error
 
         return result;
     }
