@@ -1,10 +1,9 @@
 package pl.project.calculator.exchanger;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -37,17 +36,14 @@ public class NbpExchangeRateDownloader {
             return result;
 
         } catch (HttpClientErrorException e) {
-            if (e.getStatusCode().equals("404") && e.getStatusText().contains("Not Found")) {
-                NbpExchangeRateResult result = new NbpExchangeRateResult(null, false, "Client error");
-                return result;
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND && e.getStatusText().contains("Not Found")) {
+                return new NbpExchangeRateResult(null, false, "Client error");
             } else if (e.getStatusCode().equals("404") && e.getStatusText().equals("Not Found")) {
-                NbpExchangeRateResult result = new NbpExchangeRateResult(null, false, "Not Found");
-                return result;
+                return new NbpExchangeRateResult(null, false, "Not Found");
             } else if (e.getStatusCode().equals("400") && e.getStatusText().equals(" Invalid date range")) {
-                NbpExchangeRateResult result = new NbpExchangeRateResult(null, false, "Invalid date range");
-                return result;
+                return new NbpExchangeRateResult(null, false, "Invalid date range");
             }
-
         }
+        return null;
     }
 }

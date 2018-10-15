@@ -2,11 +2,10 @@ package pl.project.calculator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.project.calculator.model.ExchangeRequest;
+import pl.project.calculator.model.ExchangeResult;
 import pl.project.calculator.service.CurrencyExchangeService;
 
 import java.math.BigDecimal;
@@ -30,17 +29,15 @@ public class ExchangeController {
         this.currencyExchangeService = currencyExchangeService;
     }
 
-    @GetMapping("/exchange/{value}/{date}/{code}")
-    public ResponseEntity<Class<CurrencyExchangeService>> getExchangeRate(
-    @PathVariable(name = "value") BigDecimal value,@PathVariable(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate exchangeDate,
-    @PathVariable(name = "code")String code) {
+    @PostMapping("/exchange")
+    public ResponseEntity<ExchangeResult> getExchangeRate(@RequestBody ExchangeRequest exchangeRequest) {
 
 
 //      1. odbieramy wartosci (value, date i currency)   gotowe
 //        2. wstrzykujemy w exchnge controller service bo chcemy je przekazac do servisu gotowe
 //            3. w currency exahange service wstrzykujemy nbp exchange downoloader gotowe
 
-        currencyExchangeService.calculate(value,exchangeDate,code);
+        ExchangeResult result = currencyExchangeService.calculate(exchangeRequest);
 
 
 //                4. do nbp exchange downoloaderprzekazujemy date i walute(wartosci nie bo jąliczymy w serwisie)
@@ -51,10 +48,10 @@ public class ExchangeController {
 //               7. nastepnie mamy wynik
 
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(result, result.getStatus());
     }
-                 //w taki obiekt mamy opanowac finalny wynik wraz ze statusem httpStatus
-     //bo to jest fajny wraper do opanowywania restowych wyników
+    //w taki obiekt mamy opanowac finalny wynik wraz ze statusem httpStatus
+    //bo to jest fajny wraper do opanowywania restowych wyników
 //   }
 
 }

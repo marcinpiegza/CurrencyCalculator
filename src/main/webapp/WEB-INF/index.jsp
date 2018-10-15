@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
 
-    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="webjars/jquery/3.0.0/jquery.min.js"></script>
 
 
 </head>
@@ -63,7 +63,7 @@
         //zapytanie ajaxowe
         $.ajax({
             //ta linijka to to co wysyłąmy JQUERT
-            type: "GET",
+            type: "POST",
             url: "/exchange/",
             //enteredvalue - ile spisujemy hajsu
             //enteredDate - data dla ktorej szukamy
@@ -75,10 +75,10 @@
                 //wysyłam cos w postaci jsona
                 'Content-Type': 'application/json'
             },
-            date: JSON.stringify({
-                value: $('enteredValue').val(),
-                date: $('enteredDate').val(),
-                currency: $('enteredCurrency').val()
+            data: JSON.stringify({
+                value: $('#enteredValue').val(),
+                date: $('#enteredDate').val(),
+                currency: $('#enteredCurrency').val()
 
             }),
 
@@ -86,8 +86,10 @@
             //ta linijka to to co dostajemy w odpowiedzi czyli REST
             success: function (result) {
                 console.log(result);
+            },
+            error: function(result){
+                console.log(result);
             }
-
             // error:  function(result){
 
     })});

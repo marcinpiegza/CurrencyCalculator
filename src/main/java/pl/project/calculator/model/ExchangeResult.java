@@ -15,19 +15,15 @@ public class ExchangeResult {
     private BigDecimal money;
     private String error;
     private HttpStatus status;
+    private BigDecimal rate;
 
-    public ExchangeResult(BigDecimal money, String error, HttpStatus status) {
+    public ExchangeResult() {
+    }
+
+    public ExchangeResult(BigDecimal money, String error, HttpStatus status, BigDecimal rate) {
         this.money = money;
         this.error = error;
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "ExchangeResult{" +
-                "money=" + money +
-                ", error='" + error + '\'' +
-                ", status=" + status +
-                '}';
+        this.rate = rate;
     }
 }

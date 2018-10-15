@@ -1,28 +1,32 @@
 package pl.project.calculator.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class ExchangeRequest {
 
-    private BigDecimal vaule;
-    private LocalDate exchangeDate;
+    private BigDecimal value;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date;
     private String currency;
 
-    public BigDecimal getVaule() {
-        return vaule;
+    public BigDecimal getValue() {
+        return value;
     }
 
-    public void setVaule(BigDecimal vaule) {
-        this.vaule = vaule;
+    public void setValue(BigDecimal value) {
+        this.value = value;
     }
 
-    public LocalDate getExchangeDate() {
-        return exchangeDate;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setExchangeDate(LocalDate exchangeDate) {
-        this.exchangeDate = exchangeDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getCurrency() {
