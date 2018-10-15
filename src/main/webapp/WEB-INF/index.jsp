@@ -25,11 +25,11 @@ link do tła
 </style>
 </!-->
 <h2>
-    <blink>This text blinks! :) </blink>
+    <blink>This text blinks! :)</blink>
 
 </h2>
 
-    <span class="blink"> DUPA</span></h1>
+<span class="blink"> DUPA</span></h1>
 <div class="form-group">
     <label for="enteredValue">Money</label>
     <input type="number" class="form-control" id="enteredValue">
@@ -38,7 +38,7 @@ link do tła
 <div class="form-group row">
     <label for="enteredDate" class="col-2 col-form-label">Date</label>
     <div class="col-10">
-        <input class="form-control" type="date"  id="enteredDate">
+        <input class="form-control" type="date" id="enteredDate">
     </div>
 </div>
 
@@ -46,13 +46,17 @@ link do tła
 <div class="form-group">
     <label for="enteredCurrency">Select currency</label>
     <select class="form-control" id="enteredCurrency">
+        <c:forEach items="${sorts}" var="item">
+            Try: ${item}<br>
+        </c:forEach>
+
         <option>GBP</option>
         <option>USD</option>
         <option>EUR</option>
         <option>CNY</option>
     </select>
     <label for="ExampleInputPLN">Wartość w GBP:</label>
-    <input type="number" class="form-control" id="ExampleInputGBP" placeholder="GBP" disabled>
+    <input type="number" class="form-control" id="EndingValue" placeholder="GBP" disabled>
 </div>
 
 
@@ -64,12 +68,11 @@ link do tła
 </div>
 
 
-
 <button type="button" id="Button">Przelicz</button>
 
 <script>
 
-    $('#Button').click(function() {
+    $('#Button').click(function () {
         //zapytanie ajaxowe
         $.ajax({
             //ta linijka to to co wysyłąmy JQUERT
@@ -96,13 +99,18 @@ link do tła
             //ta linijka to to co dostajemy w odpowiedzi czyli REST
             success: function (result) {
                 console.log(result);
+
+                     $('#EndingValue').val(result.money)
+                    $('#ExampleInputPLN').val(result.rate)
+
             },
-            error: function(result){
+            error: function (result) {
                 console.log(result);
             }
             // error:  function(result){
 
-    })});
+        })
+    });
 </script>
 </body>
 </html>

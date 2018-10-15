@@ -1,4 +1,8 @@
 package pl.project.calculator.model;
 
-public class CurrencyEnum {
+public enum CurrencyEnum {
+
+
+
+
 }
