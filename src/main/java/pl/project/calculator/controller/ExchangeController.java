@@ -21,7 +21,6 @@ public class ExchangeController {
     // albo wysyłąmy wszystkie parametry @PathVariable lub robimy jeden obiekt @RequestBody MyObject object
     //wiec do musi to sami przemyslec
 
-    //to powinno kierowac do serwisu ale  nie wiem czy działa
     private final CurrencyExchangeService currencyExchangeService;
 
     @Autowired

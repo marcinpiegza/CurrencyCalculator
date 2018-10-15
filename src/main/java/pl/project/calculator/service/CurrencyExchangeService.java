@@ -14,7 +14,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 
 @Service
-public class CurrencyExchangeService {
+public class CurrencyExchangeService implements ICurrencyExchangeService {
 
     private final NbpExchangeRateDownloader nbpExchangeRateDownloader;
 
@@ -23,6 +23,7 @@ public class CurrencyExchangeService {
         this.nbpExchangeRateDownloader = nbpExchangeRateDownloader;
     }
 
+    @Override
     public ExchangeResult calculate(ExchangeRequest exchangeRequest) {
         NbpExchangeRateResult nbpExchangeRateResult = nbpExchangeRateDownloader.downloadExchangeRate(exchangeRequest.getCurrency(), exchangeRequest.getDate());
         if (nbpExchangeRateResult.isStatus()) {
@@ -31,6 +32,8 @@ public class CurrencyExchangeService {
         }
         return new ExchangeResult(null, nbpExchangeRateResult.getError(), HttpStatus.BAD_REQUEST, null);
 
-    return null;
+
     }
+
+
 }

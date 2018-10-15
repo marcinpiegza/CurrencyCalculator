@@ -1,11 +1,10 @@
 package pl.project.calculator.exchanger;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -39,15 +38,15 @@ public class NbpExchangeRateDownloader {
 
         } catch (HttpClientErrorException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND && e.getStatusText().contains("Not Found")) {
-                return new NbpExchangeRateResult(null, false, "Client error");
+                return new NbpExchangeRateResult("Client error");
             } else if (e.getStatusCode().equals("404") && e.getStatusText().equals("Not Found")) {
-                return new NbpExchangeRateResult(null, false, "Not Found");
+                return new NbpExchangeRateResult("Not Found");
             } else if (e.getStatusCode().equals("400") && e.getStatusText().equals(" Invalid date range")) {
-                return new NbpExchangeRateResult(null, false, "Invalid date range");
+                return new NbpExchangeRateResult("Invalid date range");
             }
 
         }
-        //obiekt typu co ze sie odjebało ale nie wiadomo co jako error
-    return null;
+
+        return new NbpExchangeRateResult("Something goes wrong, nobody knows what");
     }
 }

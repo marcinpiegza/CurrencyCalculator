@@ -10,12 +10,14 @@ import java.math.BigDecimal;
 @Setter
 public class NbpExchangeRateResult {
 
-    //stawka, error message, boolean status
+
     private BigDecimal rate;
     private boolean status;
     private String error;
 
-
+    public NbpExchangeRateResult(String error) {
+        this.error = error;
+    }
 
     public NbpExchangeRateResult(BigDecimal rate, boolean status, String error) {
         this.rate = rate;

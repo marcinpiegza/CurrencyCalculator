@@ -15,11 +15,15 @@
 
 <body>
 
-<style>
+
+<!-- <style>
+link do tła
     body{
         background-image: url("https://www.medianauka.pl/biologia/grafika/plazy/zaba-wodna.jpg");
     }
+
 </style>
+</!-->
 <h2>
     <blink>This text blinks! :) </blink>
 
