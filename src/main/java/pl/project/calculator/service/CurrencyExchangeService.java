@@ -18,18 +18,17 @@ public class CurrencyExchangeService {
         this.nbpExchangeRateDownloader = nbpExchangeRateDownloader;
     }
 
-    public NbpExchangeRateResult calculate(BigDecimal value,LocalDate exchangeDate, String code) {
+    public NbpExchangeRateResult calculate(BigDecimal value, LocalDate exchangeDate, String code) {
         NbpExchangeRateResult nbpExchangeRateResult = nbpExchangeRateDownloader.downloadExchangeRate(code, exchangeDate);
- if(nbpExchangeRateResult.isStatus()==true){
-     BigDecimal result = BigDecimal value/nbpExchangeRateResult.getRate();
+        if (nbpExchangeRateResult.isStatus() == true) {
+            BigDecimal result = value.divide(nbpExchangeRateResult.getRate());
 
 
-
-
-        return result;
-   }  else {
-     nbpExchangeRateResult.getError();
+            return null;
+        } else {
+            nbpExchangeRateResult.getError();
         }
+
 
     }
 }

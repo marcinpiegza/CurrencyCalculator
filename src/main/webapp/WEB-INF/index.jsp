@@ -5,12 +5,21 @@
     <title>ExchangeCurrency</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
     <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+
 
 </head>
 
-<body>
 
+<body>
+<h2>
+    <blink>This text blinks! :) </blink>
+
+</h2>
+
+    <span class="blink"> DUPA</span></h1>
 <div class="form-group">
     <label for="enteredValue">Money</label>
     <input type="number" class="form-control" id="enteredValue">
