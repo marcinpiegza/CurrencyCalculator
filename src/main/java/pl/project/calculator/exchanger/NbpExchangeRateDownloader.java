@@ -1,9 +1,11 @@
 package pl.project.calculator.exchanger;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
@@ -43,7 +45,9 @@ public class NbpExchangeRateDownloader {
             } else if (e.getStatusCode().equals("400") && e.getStatusText().equals(" Invalid date range")) {
                 return new NbpExchangeRateResult(null, false, "Invalid date range");
             }
+
         }
-        return null;
+        //obiekt typu co ze sie odjebało ale nie wiadomo co jako error
+    return null;
     }
 }

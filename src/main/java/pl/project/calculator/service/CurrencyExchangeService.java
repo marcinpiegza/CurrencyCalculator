@@ -31,6 +31,6 @@ public class CurrencyExchangeService {
         }
         return new ExchangeResult(null, nbpExchangeRateResult.getError(), HttpStatus.BAD_REQUEST, null);
 
-
+    return null;
     }
 }
