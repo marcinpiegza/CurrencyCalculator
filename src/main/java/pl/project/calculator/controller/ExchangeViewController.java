@@ -12,6 +12,7 @@ public class ExchangeViewController {
     @GetMapping("/")
     public String displayMainView(Model model){
         model.addAttribute("currencies", new ArrayList<>());
+
         return "index";
     }
 

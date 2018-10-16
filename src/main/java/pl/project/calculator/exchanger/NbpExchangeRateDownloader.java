@@ -8,7 +8,9 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -27,7 +29,6 @@ public class NbpExchangeRateDownloader {
         Map<String, String> params = new HashMap<>();
         params.put("code", code);
         params.put("date", exchangeDate.toString());
-
 
         try {
             NbpExchangeRateSeries nbpExchangeRateSeries = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/rates/A/{code}/{date}/"
@@ -49,4 +50,33 @@ public class NbpExchangeRateDownloader {
 
         return new NbpExchangeRateResult("Something goes wrong, nobody knows what");
     }
+
+    public NbpExchangeRateResult downloadCurrentCourses(LocalDate exchangeDate) {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("date", exchangeDate.toString());
+
+        try {
+
+            NbpCurrencies nbpCurrenciess = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/tables/A/{date}/",NbpCurrencies.class,params);
+
+            NbpExchangeRateResult result = new NbpExchangeRateResult(nbpCurrenciess.getRates().get(0).getMid(),true,null);
+
+            return result;
+
+        } catch (HttpClientErrorException e) {
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND && e.getStatusText().contains("Not Found")) {
+                return new NbpExchangeRateResult("Client error");
+            } else if (e.getStatusCode().equals("404") && e.getStatusText().equals("Not Found")) {
+                return new NbpExchangeRateResult("Not Found");
+            } else if (e.getStatusCode().equals("400") && e.getStatusText().equals(" Invalid date range")) {
+                return new NbpExchangeRateResult("Invalid date range");
+            }
+
+        }
+
+        return new NbpExchangeRateResult("Something goes wrong, nobody knows what");
+    }
+
+
 }
