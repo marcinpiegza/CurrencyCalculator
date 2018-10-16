@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -16,22 +18,23 @@
 <body>
 
 
- <style>
+<style>
 
-    body{
-       background-color: darkgrey ;
+    body {
+        background-color: darkgrey;
+    }
+
+    h1 {
+        color: tomato;
     }
 
 </style>
 
 
-
-
-
-    <span class="blink"> EXCHANGE CANTOR</span></h1>
+<h1 size="100"> EXCHANGE CANTOR</h1>
 <div class="form-group">
     <label for="enteredValue">Money</label>
-    <input type="number" class="form-control" id="enteredValue">
+    <input type="number" class="form-control" id="enteredValue" placeholder="PLN">
 </div>
 
 <div class="form-group row">
@@ -45,24 +48,21 @@
 <div class="form-group">
     <label for="enteredCurrency">Select currency</label>
     <select class="form-control" id="enteredCurrency">
-        <c:forEach items="${sorts}" var="item">
-            Try: ${item}<br>
-        </c:forEach>
-
         <option>GBP</option>
         <option>USD</option>
-        <option>EUR</option>
-        <option>CNY</option>
+        <c:forEach items="${currencies}" var="currency">
+            <option>${currency.code}</option>
+        </c:forEach>
     </select>
-    <label for="ExampleInputPLN">Kurs na dany dzien:</label>
-    <input type="number" class="form-control" id="EndingValue" placeholder="GBP" disabled>
+    <label for="ExampleOutput">Kurs na dany dzien:</label>
+    <input type="number" class="form-control" id="EndingValue" disabled>
 </div>
 
 
 <div class="form-group row">
-    <label for="enteredDate" class="col-2 col-form-label">Wartosc po przewalutowaniu</label>
+    <label for="enteredDate" class="col-2 col-form-label">Wartosc po przewalutowaniu: </label>
     <div class="col-10">
-        <input class="form-control" type="number" id="ExampleInputPLN" disabled>
+        <input class="form-control" type="text" id="ExampleOutput" disabled>
     </div>
 </div>
 
@@ -70,6 +70,10 @@
 <button type="button" id="Button">Przelicz</button>
 
 <script>
+     var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
+    $('#enteredCurrency').click(function(){
+       selectedCurrency;
+    });
 
     $('#Button').click(function () {
         //zapytanie ajaxowe
@@ -99,11 +103,11 @@
             success: function (result) {
                 console.log(result);
 
-                     $('#EndingValue').val(result.rate)
-                    $('#ExampleInputPLN').val(result.money)
+                $('#EndingValue').val(result.rate);
+                $('#ExampleOutput').val(result.money + ' ' + $('#enteredCurrency').val())
 
             },
-            error: function(result){
+            error: function (result) {
                 console.log(result);
                 alert(result.responseJSON.error);
             }
@@ -112,5 +116,25 @@
         })
     });
 </script>
+<div class="container">
+    <form action="/" method="post">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Waluta</th>
+                <th>Sredni kurs</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${Currency}" var="currency" varStatus="loop">
+            <tr>
+                <td>${currency.code}}</td>
+                <td>${currency.rate}</td>
+            </tr>
+            </tbody>
+            </c:forEach>
+        </table>
+    </form>
+</div>
 </body>
 </html>
