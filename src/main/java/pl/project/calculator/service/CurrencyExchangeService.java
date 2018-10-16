@@ -4,14 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import pl.project.calculator.exchanger.NbpExchangeRateDownloader;
-import pl.project.calculator.exchanger.NbpExchangeRateResult;
+import pl.project.calculator.exchanger.calculator.NbpExchangeRateResult;
 import pl.project.calculator.model.ExchangeRequest;
 import pl.project.calculator.model.ExchangeResult;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
-import java.time.LocalDate;
 
 @Service
 public class CurrencyExchangeService implements ICurrencyExchangeService {

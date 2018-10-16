@@ -1,4 +1,4 @@
-package pl.project.calculator.exchanger;
+package pl.project.calculator.exchanger.calculator;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -6,11 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import pl.project.calculator.exchanger.calculator.NbpExchangeRateResult;
+import pl.project.calculator.exchanger.calculator.NbpExchangeRateSeries;
+import pl.project.calculator.exchanger.table.NbpCurrencies;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -51,18 +52,16 @@ public class NbpExchangeRateDownloader {
         return new NbpExchangeRateResult("Something goes wrong, nobody knows what");
     }
 
-    public NbpExchangeRateResult downloadCurrentCourses(LocalDate exchangeDate) {
+    public NbpCurrencies downloadCurrentCourses(LocalDate exchangeDate) {
 
-        Map<String, String> params = new HashMap<>();
-        params.put("date", exchangeDate.toString());
+        Map<String, String> param = new HashMap<>();
+        param.put("date", exchangeDate.toString());
 
         try {
 
-            NbpCurrencies nbpCurrenciess = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/tables/A/{date}/",NbpCurrencies.class,params);
+            NbpCurrencies nbpCurrencies = restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/tables/A/{date}/",NbpCurrencies.class,param);
 
-            NbpExchangeRateResult result = new NbpExchangeRateResult(nbpCurrenciess.getRates().get(0).getMid(),true,null);
-
-            return result;
+            return nbpCurrencies.getRates();
 
         } catch (HttpClientErrorException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND && e.getStatusText().contains("Not Found")) {
@@ -75,7 +74,7 @@ public class NbpExchangeRateDownloader {
 
         }
 
-        return new NbpExchangeRateResult("Something goes wrong, nobody knows what");
+        return new NbpCurrencies("Something goes wrong, nobody knows what");
     }
 
 
