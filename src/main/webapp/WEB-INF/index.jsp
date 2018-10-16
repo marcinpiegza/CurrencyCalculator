@@ -104,7 +104,8 @@
 
             },
             error: function(result){
-                alert(result);
+                console.log(result);
+                alert(result.responseJSON.error);
             }
             // error:  function(result){
 
