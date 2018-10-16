@@ -55,7 +55,7 @@
         <option>EUR</option>
         <option>CNY</option>
     </select>
-    <label for="ExampleInputPLN">Wartość w GBP:</label>
+    <label for="ExampleInputPLN">Wartość:</label>
     <input type="number" class="form-control" id="EndingValue" placeholder="GBP" disabled>
 </div>
 
