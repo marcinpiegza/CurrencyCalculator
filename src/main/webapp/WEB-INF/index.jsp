@@ -75,6 +75,11 @@
        selectedCurrency;
     });
 
+    $('#enteredDate').change(function () {
+        $('#exchangeDateId').html('Kurs na dzień: ');
+        $('#exchangeDateId').append($('#enteredDate').val());
+    });
+
     $('#Button').click(function () {
         //zapytanie ajaxowe
         $.ajax({
@@ -117,6 +122,8 @@
     });
 </script>
 <div class="container">
+
+    <div id="exchangeDateId">Kurs na dzień: </div>
     <form action="/" method="post">
         <table class="table table-hover">
             <thead>
