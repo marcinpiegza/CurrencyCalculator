@@ -52,7 +52,7 @@
             <option>${currency.code}</option>
         </c:forEach>
     </select>
-    <label for="ExampleOutput">Kurs na dany dzien:</label>
+    <label id="exchangeDateId" for="ExampleOutput">Kurs na dany dzien:</label>
     <input type="number" class="form-control" id="EndingValue" disabled>
 </div>
 
@@ -121,7 +121,7 @@
 </script>
 <div class="container">
 
-    <div id="exchangeDateId">Kurs na dzień: </div>
+    <div id="exchangeDateIda">Kurs na dzień: </div>
     <form action="/" method="post">
         <table class="table table-hover">
             <thead>

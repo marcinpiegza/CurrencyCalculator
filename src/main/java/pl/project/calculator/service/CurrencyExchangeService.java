@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import pl.project.calculator.exchanger.NbpExchangeRateDownloader;
 import pl.project.calculator.exchanger.calculator.NbpExchangeRateResult;
+import pl.project.calculator.exchanger.table.NbpExchangeTableResult;
 import pl.project.calculator.model.ExchangeRequest;
 import pl.project.calculator.model.ExchangeResult;
 
@@ -29,8 +30,21 @@ public class CurrencyExchangeService implements ICurrencyExchangeService {
             return new ExchangeResult(result, null, HttpStatus.OK, nbpExchangeRateResult.getRate());
         }
         return new ExchangeResult(null, nbpExchangeRateResult.getError(), HttpStatus.BAD_REQUEST, null);
+    }
 
-
+    @Override
+    public NbpExchangeTableResult calculateRates (ExchangeRequest exchangeRequest){
+        NbpExchangeTableResult nbpExchangeTableResult =nbpExchangeRateDownloader.downloadCurrentCourses(exchangeRequest.getDate());
+        if(nbpExchangeTableResult.isStatus()){
+            nbpExchangeTableResult.getTableRates().forEach(
+                    rate -> {
+                        rate.setAsk(rate.getAsk().multiply(new BigDecimal(1.05)));
+                        rate.setBid(rate.getBid().multiply(new BigDecimal(0.95)));
+                    }
+            );
+           return nbpExchangeTableResult;
+        }
+        return null;
     }
 
 

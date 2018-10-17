@@ -8,11 +8,11 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class NbpExchangeTable {
+public class NbpExchangeTableRate {
 
-        private String currency;
-        private LocalDate code;
-        private BigDecimal mid;
-
+    private String currency;
+    private String code;
+    private BigDecimal bid;
+    private BigDecimal ask;
 
     }
