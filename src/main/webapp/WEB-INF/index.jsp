@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -48,8 +49,8 @@
     <select class="form-control" id="enteredCurrency">
         <option>GBP</option>
         <option>USD</option>
-        <c:forEach items="${currencies}" var="currency">
-            <option>${currency.code}</option>
+        <c:forEach items="${rates}" var="rate" varStatus="loop">
+            <option>${rate.code}</option>
         </c:forEach>
     </select>
     <label id="exchangeDateId" for="ExampleOutput">Kurs na dany dzien:</label>
@@ -119,27 +120,6 @@
         })
     });
 </script>
-<div class="container">
 
-    <div id="exchangeDateIda">Kurs na dzień: </div>
-    <form action="/" method="post">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Waluta</th>
-                <th>Sredni kurs</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${Currency}" var="currency" varStatus="loop">
-            <tr>
-                <td>${currency.code}}</td>
-                <td>${currency.rate}</td>
-            </tr>
-            </tbody>
-            </c:forEach>
-        </table>
-    </form>
-</div>
 </body>
 </html>

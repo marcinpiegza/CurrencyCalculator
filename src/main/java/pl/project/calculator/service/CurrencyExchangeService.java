@@ -11,6 +11,7 @@ import pl.project.calculator.model.ExchangeResult;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 
 @Service
 public class CurrencyExchangeService implements ICurrencyExchangeService {
@@ -31,10 +32,9 @@ public class CurrencyExchangeService implements ICurrencyExchangeService {
         }
         return new ExchangeResult(null, nbpExchangeRateResult.getError(), HttpStatus.BAD_REQUEST, null);
     }
-
-    @Override
-    public NbpExchangeTableResult calculateRates (ExchangeRequest exchangeRequest){
-        NbpExchangeTableResult nbpExchangeTableResult =nbpExchangeRateDownloader.downloadCurrentCourses(exchangeRequest.getDate());
+@Override
+    public NbpExchangeTableResult calculateRates (LocalDate date){
+        NbpExchangeTableResult nbpExchangeTableResult =nbpExchangeRateDownloader.downloadCurrentCourses(date);
         if(nbpExchangeTableResult.isStatus()){
             nbpExchangeTableResult.getTableRates().forEach(
                     rate -> {

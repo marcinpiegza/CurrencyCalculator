@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.project.calculator.service.CurrencyExchangeService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Controller
@@ -22,7 +23,7 @@ public class ExchangeViewController {
 
     @GetMapping("/getRates")
     public String displayAllRatesViev(Model model){
-        model.addAttribute("rates", currencyExchangeService.calculate());
+        model.addAttribute("rates", currencyExchangeService.calculateRates(LocalDate.now()).getTableRates());
         return "tableCurrency";
     }
 

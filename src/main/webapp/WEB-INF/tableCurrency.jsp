@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ppieg
@@ -14,6 +15,29 @@
     <title>Title</title>
 </head>
 <body>
+<div class="container">
 
+    <div id="exchangeDateIda">Kurs na dzień: </div>
+    <form action="/" method="post">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Waluta</th>
+                <th>Sprzedaż</th>
+                <th>Kupno</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${rates}" var="rate" varStatus="loop">
+            <tr>
+                <td>${rate.code}}</td>
+                <td>${rate.bid}</td>
+                <td>${rate.ask}</td>
+            </tr>
+            </tbody>
+            </c:forEach>
+        </table>
+    </form>
+</div>
 </body>
 </html>
