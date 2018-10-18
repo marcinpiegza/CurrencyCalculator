@@ -12,8 +12,10 @@ import java.util.ArrayList;
 @Controller
 public class ExchangeViewController {
 
+
     @Autowired
     CurrencyExchangeService currencyExchangeService;
+
     @GetMapping("/")
     public String displayMainView(Model model){
         model.addAttribute("currencies", currencyExchangeService.calculateRates(LocalDate.now()).getTableRates());
@@ -25,6 +27,11 @@ public class ExchangeViewController {
     public String displayAllRatesViev(Model model){
         model.addAttribute("rates", currencyExchangeService.calculateRates(LocalDate.now()).getTableRates());
         return "tableCurrency";
+    }
+    @GetMapping("/showHistory")
+    public String showHistory(Model model){
+        model.addAttribute("history",currencyExchangeService.showHistory());
+        return "tableExchangeHistory";
     }
 
 
