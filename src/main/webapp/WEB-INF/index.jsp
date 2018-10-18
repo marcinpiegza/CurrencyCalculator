@@ -40,12 +40,14 @@
     <label for="enteredDate" class="col-2 col-form-label">Date</label>
     <div class="col-10">
         <input class="form-control" type="date" id="enteredDate">
-<div class="col-3">
-        <label for="enteredCurrency">Select currency</label>
-        <select class="form-control" id="enteredCurrency">
-            <option>GBP</option>
-            <option>USD</option>
-            <c:forEach items="${rates}" var="currency" varStatus="loop">
+    </div>
+</div>
+
+
+<div class="form-group">
+    <label for="enteredCurrency">Select currency</label>
+    <select class="form-control" id="enteredCurrency">
+        <c:forEach items="${currencies}" var="currency" varStatus="loop">
             <option>${currency.code}</option>
             </c:forEach>
         </select>

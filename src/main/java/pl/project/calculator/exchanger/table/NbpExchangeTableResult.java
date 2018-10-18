@@ -14,6 +14,9 @@ public class NbpExchangeTableResult {
     private boolean status;
     private String error;
 
+    public NbpExchangeTableResult() {
+    }
+
     public NbpExchangeTableResult(List<NbpExchangeTableRate> tableRates, boolean status, String error) {
         this.tableRates = tableRates;
         this.status = status;
