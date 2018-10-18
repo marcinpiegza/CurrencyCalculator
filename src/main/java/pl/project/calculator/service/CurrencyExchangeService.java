@@ -38,8 +38,8 @@ public class CurrencyExchangeService implements ICurrencyExchangeService {
         if(nbpExchangeTableResult.isStatus()){
             nbpExchangeTableResult.getTableRates().forEach(
                     rate -> {
-                        rate.setAsk(rate.getAsk().multiply(new BigDecimal(1.05)));
-                        rate.setBid(rate.getBid().multiply(new BigDecimal(0.95)));
+                        rate.setAsk(rate.getAsk().multiply(new BigDecimal(1.05)).setScale(2, RoundingMode.HALF_UP));
+                        rate.setBid(rate.getBid().multiply(new BigDecimal(0.95)).setScale(2, RoundingMode.HALF_UP));
                     }
             );
            return nbpExchangeTableResult;
