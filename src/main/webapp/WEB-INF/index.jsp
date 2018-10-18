@@ -47,9 +47,7 @@
 <div class="form-group">
     <label for="enteredCurrency">Select currency</label>
     <select class="form-control" id="enteredCurrency">
-        <option>GBP</option>
-        <option>USD</option>
-        <c:forEach items="${rates}" var="currency" varStatus="loop">
+        <c:forEach items="${currencies}" var="currency" varStatus="loop">
             <option>${currency.code}</option>
         </c:forEach>
     </select>

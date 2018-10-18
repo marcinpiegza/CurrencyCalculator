@@ -16,7 +16,7 @@ public class ExchangeViewController {
     CurrencyExchangeService currencyExchangeService;
     @GetMapping("/")
     public String displayMainView(Model model){
-        model.addAttribute("currencies", new ArrayList<>());
+        model.addAttribute("currencies", currencyExchangeService.calculateRates(LocalDate.now()).getTableRates());
 
         return "index";
     }
