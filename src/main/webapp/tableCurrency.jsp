@@ -69,7 +69,7 @@
         <tbody>
         <c:forEach items="${rates}" var="rate" varStatus="loop">
         <tr>
-            <td>${rate.code}}</td>
+            <td>${rate.code}</td>
             <td>${rate.bid}</td>
             <td>${rate.ask}</td>
         </tr>

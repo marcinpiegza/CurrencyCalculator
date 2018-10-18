@@ -23,6 +23,7 @@ public class NbpExchangeTableResult {
         this.error = error;
     }
 
+
     public NbpExchangeTableResult(String error) {
         this.error = error;
     }

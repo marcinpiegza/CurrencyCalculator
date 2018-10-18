@@ -34,54 +34,54 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-    <label for="enteredValue">Money</label>
-    <input type="number" class="form-control" id="enteredValue" placeholder="PLN">
+            <label for="enteredValue">Money</label>
+            <input type="number" class="form-control" id="enteredValue" placeholder="PLN">
 
-    <label for="enteredDate" class="col-2 col-form-label">Date</label>
-    <div class="col-10">
-        <input class="form-control" type="date" id="enteredDate">
-    </div>
-</div>
-
-
-<div class="form-group">
-    <label for="enteredCurrency">Select currency</label>
-    <select class="form-control" id="enteredCurrency">
-        <c:forEach items="${currencies}" var="currency" varStatus="loop">
-            <option>${currency.code}</option>
-            </c:forEach>
-        </select>
-</div>
-    </div>
-
-
-
-
-
-
-
+            <label for="enteredDate" class="col-2 col-form-label">Date</label>
+            <div class="col-10">
+                <input class="form-control" type="date" id="enteredDate">
+            </div>
         </div>
 
-       <div class="badge-danger">
+
+        <div class="form-group">
+            <label for="enteredCurrency">Select currency</label>
+            <select class="form-control" id="enteredCurrency">
+                <c:forEach items="${currencies}" var="currency" varStatus="loop">
+                    <option>${currency.code}</option>
+                </c:forEach>
+            </select>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+<div class="badge-danger">
     <label id="exchangeDateId" for="ExampleOutput">Kurs na dany dzien:</label>
     <input type="number" class="form-control" id="EndingValue" disabled>
-       </div>
+</div>
 
-    <label for="enteredDate" class="col-2 col-form-label">Wartosc po przewalutowaniu: </label>
+<label for="enteredDate" class="col-2 col-form-label">Wartosc po przewalutowaniu: </label>
 
-    <div class="col-10">
-        <input class="form-control" type="text" id="ExampleOutput" disabled>
-        </div>
-    </div>
+<div class="col-10">
+    <input class="form-control" type="text" id="ExampleOutput" disabled>
+</div>
+</div>
 </div>
 
 
 <button type="button" id="Button">Przelicz</button>
 
 <script>
-     var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
+    var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
     $('#enteredCurrency').click(function(){
-       selectedCurrency;
+        selectedCurrency;
     });
 
     $('#enteredDate').change(function () {
