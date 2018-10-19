@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "user")
-public class User implements UserDetailsService {
+public class User implements UserDetailsService, UserDetails {
 
 
     private String username;
