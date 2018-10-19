@@ -31,12 +31,12 @@
 
 
 <h1 size="100"> EXCHANGE CANTOR</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-6">
+<div class="form-group">
     <label for="enteredValue">Money</label>
     <input type="number" class="form-control" id="enteredValue" placeholder="PLN">
+</div>
 
+<div class="form-group row">
     <label for="enteredDate" class="col-2 col-form-label">Date</label>
     <div class="col-10">
         <input class="form-control" type="date" id="enteredDate">
@@ -47,31 +47,19 @@
 <div class="form-group">
     <label for="enteredCurrency">Select currency</label>
     <select class="form-control" id="enteredCurrency">
-        <c:forEach items="${currencies}" var="currency" varStatus="loop">
+        <option>GBP</option>
+        <option>USD</option>
+        <c:forEach items="${rates}" var="currency" varStatus="loop">
             <option>${currency.code}</option>
-            </c:forEach>
-        </select>
-</div>
-    </div>
-
-
-
-
-
-
-
-        </div>
-
-       <div class="badge-danger">
+        </c:forEach>
+    </select>
     <label id="exchangeDateId" for="ExampleOutput">Kurs na dany dzien:</label>
     <input type="number" class="form-control" id="EndingValue" disabled>
-       </div>
-
+</div>
+<div class="form-group row">
     <label for="enteredDate" class="col-2 col-form-label">Wartosc po przewalutowaniu: </label>
-
     <div class="col-10">
         <input class="form-control" type="text" id="ExampleOutput" disabled>
-        </div>
     </div>
 </div>
 
@@ -79,9 +67,9 @@
 <button type="button" id="Button">Przelicz</button>
 
 <script>
-     var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
-    $('#enteredCurrency').click(function(){
-       selectedCurrency;
+    var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
+    $('#enteredCurrency').click(function () {
+        selectedCurrency;
     });
 
     $('#enteredDate').change(function () {
@@ -132,4 +120,3 @@
 </script>
 
 </body>
-</html>

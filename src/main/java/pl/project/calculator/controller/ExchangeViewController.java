@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.project.calculator.service.CurrencyExchangeService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Controller
 public class ExchangeViewController {
@@ -18,20 +17,21 @@ public class ExchangeViewController {
     CurrencyExchangeService currencyExchangeService;
 
     @GetMapping("/")
-    public String displayMainView(Model model){
+    public String displayMainView(Model model) {
         model.addAttribute("currencies", currencyExchangeService.calculateRates(LocalDate.now()).getTableRates());
 
-        return "index";
+        return "/start";
     }
 
     @GetMapping("/getRates")
-    public String displayAllRatesViev(Model model){
+    public String displayAllRatesViev(Model model) {
         model.addAttribute("rates", currencyExchangeService.calculateRates(LocalDate.now()).getTableRates());
         return "tableCurrency";
     }
+
     @GetMapping("/showHistory")
-    public String showHistory(Model model){
-        model.addAttribute("history",currencyExchangeService.showHistory());
+    public String showHistory(Model model) {
+        model.addAttribute("history", currencyExchangeService.showHistory());
         return "tableExchangeHistory";
     }
 
@@ -41,16 +41,14 @@ public class ExchangeViewController {
 //    }
 
     @GetMapping("/register")
-    public String registrationPage(){
+    public String registrationPage() {
         return "register";
     }
 
     @GetMapping("/login")
-    public String loginPage(){
+    public String loginPage() {
         return "login";
     }
-
-
 
 
 }

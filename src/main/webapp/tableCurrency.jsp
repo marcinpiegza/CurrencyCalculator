@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 </html>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,26 +17,20 @@
 
 <div class="container">
 
-    <table class="table table-hover">
+    <table class="table-dark table-hover">
         <thead>
         <tr>
-            <th>id</th>
-            <th>value</th>
-            <th>currency</th>
-            <th>date</th>
-            <th>rate</th>
-            <th>exchangeValue</th>
+            <th>Waluta</th>
+            <th>Sprzedaz</th>
+            <th>Kupno</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${history}" var="history" varStatus="loop">
+        <c:forEach items="${rates}" var="rate" varStatus="loop">
         <tr>
-            <td>${history.id}}</td>
-            <td>${history.value}}</td>
-            <td>${history.currency}}</td>
-            <td>${history.date}}</td>
-            <td>${history.rate}}</td>
-            <td>${history.exchangeValue}}</td>
+            <td>${rate.code}</td>
+            <td>${rate.bid}</td>
+            <td>${rate.ask}</td>
         </tr>
         </tbody>
         </c:forEach>
