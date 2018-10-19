@@ -9,6 +9,7 @@ import pl.project.calculator.exchanger.table.NbpExchangeTableResult;
 import pl.project.calculator.model.ExchangeDataBaseHistory;
 import pl.project.calculator.model.ExchangeRequest;
 import pl.project.calculator.model.ExchangeResult;
+import pl.project.calculator.model.User;
 import pl.project.calculator.repository.ExchangeDataBaseHistoryRepository;
 
 import java.math.BigDecimal;
@@ -65,6 +66,15 @@ public class CurrencyExchangeService implements ICurrencyExchangeService {
 
         return lists;
     }
+
+    @Override
+    public User checkUser (String username, String password){
+        User user = new User(username,password);
+        exchangeDataBaseHistoryRepository.findById(username);
+        return
+    }
+
+
 
 
 
