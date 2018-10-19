@@ -4,18 +4,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "user")
 public class User implements UserDetailsService {
 
-    @Id
+
     private String username;
     private String password;
-    private String role;
+
+    @ManyToMany(cascade =  CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Set<UserRole> roles = new HashSet<>();
 
     public String getUsername() {
         return username;
@@ -33,21 +34,16 @@ public class User implements UserDetailsService {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public User(String username, String password, Set<UserRole> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
     }
 
     public User() {
     }
 
-    public User(String username,String password) {
-        this.username = username;
-        this.password = password;
-    }
+
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

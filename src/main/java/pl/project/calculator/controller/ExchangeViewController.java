@@ -42,7 +42,6 @@ public class ExchangeViewController {
 
     @GetMapping("/register")
     public String registrationPage(){
-
         return "register";
     }
 

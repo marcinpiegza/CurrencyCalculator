@@ -2,6 +2,8 @@ package pl.project.calculator.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import pl.project.calculator.exchanger.NbpExchangeRateDownloader;
 import pl.project.calculator.exchanger.calculator.NbpExchangeRateResult;
@@ -16,11 +18,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class CurrencyExchangeService implements ICurrencyExchangeService {
+public class CurrencyExchangeService implements ICurrencyExchangeService, UserDetails {
 
     private final NbpExchangeRateDownloader nbpExchangeRateDownloader;
     private final ExchangeDataBaseHistoryRepository exchangeDataBaseHistoryRepository;
@@ -67,15 +70,39 @@ public class CurrencyExchangeService implements ICurrencyExchangeService {
         return lists;
     }
 
+
     @Override
-    public User checkUser (String username, String password){
-        User user = new User(username,password);
-        exchangeDataBaseHistoryRepository.findById(username);
-        return
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
+    @Override
+    public String getPassword() {
+        return null;
+    }
 
+    @Override
+    public String getUsername() {
+        return null;
+    }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
 
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }

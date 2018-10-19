@@ -5,5 +5,5 @@ import pl.project.calculator.model.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    User
+    User finbByUsername(String username);
 }

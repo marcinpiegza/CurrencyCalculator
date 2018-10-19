@@ -14,6 +14,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
+
+                // ingorowanie zasobów np z boodstrapa itp
                 .ignoring()
                 .antMatchers("/resources/**")
                 .antMatchers("/webjars/**")
@@ -24,14 +26,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
+                //co jest publiczne
               .antMatchers("/register").permitAll()
+            // co jest zabezpieczone
              .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll();
 
-        httpSecurity.csrf().disable();
+        //to robi to ze haker ktory ma dostep do naszej domeny moze podmienic wartpsci w formularzu
+       // httpSecurity.csrf().disable();
     }
 
     @Bean

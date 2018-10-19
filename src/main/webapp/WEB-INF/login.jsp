@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
 </head>
 <body>
-<form action="/mainRegister.jsp" method="POST">
+//wysyłamy postem ale spring odbierze do postem i sam to zrobi
+<form action="/login" method="POST">
 
 
     <div class="form-group">
