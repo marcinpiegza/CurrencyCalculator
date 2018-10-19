@@ -55,11 +55,6 @@
     </div>
 
 
-
-
-
-
-
 </div>
 
 <div class="badge-danger">
@@ -80,7 +75,7 @@
 
 <script>
     var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
-    $('#enteredCurrency').click(function(){
+    $('#enteredCurrency').click(function () {
         selectedCurrency;
     });
 

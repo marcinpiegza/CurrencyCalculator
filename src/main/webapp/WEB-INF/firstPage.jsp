@@ -12,8 +12,12 @@
 </head>
 <body>
 
-<a href="register.jsp"><button type="button" class="btn btn-primary" id="Registration">Registration</button></a>
-<a href="login.jsp"><button type="button" class="btn btn-primary" id="Login">Login</button></a>
+<a href="register.jsp">
+    <button type="button" class="btn btn-primary" id="Registration">Registration</button>
+</a>
+<a href="login.jsp">
+    <button type="button" class="btn btn-primary" id="Login">Login</button>
+</a>
 
 //guzyczki do przejscia na strony
 

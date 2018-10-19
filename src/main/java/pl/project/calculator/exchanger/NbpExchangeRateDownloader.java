@@ -70,7 +70,7 @@ public class NbpExchangeRateDownloader {
                     }, param);
 
             List<NbpExchangeTableRate> rates = exchange.getBody().get(0).getRates();
-            NbpExchangeTableResult result = new NbpExchangeTableResult(rates,true,null);
+            NbpExchangeTableResult result = new NbpExchangeTableResult(rates, true, null);
             return result;
 
         } catch (HttpClientErrorException e) {

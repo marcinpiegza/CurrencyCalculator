@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@JsonIgnoreProperties(ignoreUnknown =true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NbpExchangeRateSeries {
 
 

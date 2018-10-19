@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -69,7 +68,7 @@
 
 <script>
     var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
-    $('#enteredCurrency').click(function(){
+    $('#enteredCurrency').click(function () {
         selectedCurrency;
     });
 
