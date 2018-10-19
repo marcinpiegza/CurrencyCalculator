@@ -12,8 +12,8 @@
 </head>
 <body>
 
-<button type="submit" class="btn btn-primary" id="Registration">Registration</button>
-<button type="submit" class="btn btn-primary" id="Login">Login</button>
+<a href="register.jsp"><button type="button" class="btn btn-primary" id="Registration">Registration</button></a>
+<a href="login.jsp"><button type="button" class="btn btn-primary" id="Login">Login</button></a>
 
 //guzyczki do przejscia na strony
 
