@@ -1,16 +1,18 @@
 package pl.project.calculator.model;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "user")
-public class User {
+public class User implements UserDetailsService {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private String username;
     private String password;
     private String role;
@@ -45,6 +47,11 @@ public class User {
     public User(String username,String password) {
         this.username = username;
         this.password = password;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return null;
     }
 }
 

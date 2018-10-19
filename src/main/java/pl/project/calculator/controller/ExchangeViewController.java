@@ -39,15 +39,14 @@ public class ExchangeViewController {
 //        return "firstPage";
 //    }
 
-    @PostMapping("/register")
+    @GetMapping("/register")
     public String registrationPage(){
 
         return "register";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String loginPage(){
-
         return "login";
     }
 
