@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<jsp:include page="WEB-INF/fragments/header.jsp"/>
 <div class="container">
 
     <table class="table-dark table-hover">
@@ -36,6 +36,6 @@
         </c:forEach>
     </table>
 </div>
-
+<jsp:include page="WEB-INF/fragments/footer.jsp"/>
 </body>
 </html>

@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
 </head>
 <body>
+//wysyłamy postem ale spring odbierze do postem i sam to zrobi
 <jsp:include page="WEB-INF/fragments/header.jsp"/>
 
-<form action="/register" method="post">
+<form action="/login" method="post">
+
     <div class="form-group">
         <label for="exampleInputUsername1">Username</label>
         <input type="text" class="form-control" id="exampleInputUsername1" name="username" placeholder="Username">
@@ -20,10 +22,8 @@
         <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
     </div>
 
-    <button type="submit" class="btn btn-primary" id="Registration">Registration</button>
+    <button type="submit" class="btn btn-primary" id="Login">Login</button>
 </form>
-
 <jsp:include page="WEB-INF/fragments/footer.jsp"/>
-
 </body>
 </html>

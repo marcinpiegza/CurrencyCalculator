@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import pl.project.calculator.service.CurrencyExchangeService;
 
 import java.time.LocalDate;
@@ -20,7 +19,7 @@ public class ExchangeViewController {
     public String displayMainView(Model model) {
         model.addAttribute("currencies", currencyExchangeService.calculateRates(LocalDate.now()).getTableRates());
 
-        return "/start";
+        return "/welcomePage";
     }
 
     @GetMapping("/getRates")
@@ -35,20 +34,7 @@ public class ExchangeViewController {
         return "tableExchangeHistory";
     }
 
-//    @GetMapping("/")
-//        public String firstPage(){
-//        return "firstPage";
-//    }
 
-    @GetMapping("/register")
-    public String registrationPage() {
-        return "register";
-    }
-
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
 
 
 }

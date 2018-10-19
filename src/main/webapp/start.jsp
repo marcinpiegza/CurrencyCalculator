@@ -15,116 +15,19 @@
 
 
 <body>
-
-
-<style>
-
-    body {
-        background-color: darkgrey;
-    }
-
-    h1 {
-        color: tomato;
-    }
-
-</style>
-
-
-<h1 size="100"> EXCHANGE CANTOR</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            <label for="enteredValue">Money</label>
-            <input type="number" class="form-control" id="enteredValue" placeholder="PLN">
-
-            <label for="enteredDate" class="col-2 col-form-label">Date</label>
-            <div class="col-10">
-                <input class="form-control" type="date" id="enteredDate">
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <label for="enteredCurrency">Select currency</label>
-            <select class="form-control" id="enteredCurrency">
-                <c:forEach items="${currencies}" var="currency" varStatus="loop">
-                    <option>${currency.code}</option>
-                </c:forEach>
-            </select>
-        </div>
-    </div>
-
-
+<jsp:include page="WEB-INF/fragments/header.jsp"/>
+<div class="btn-group btn-group-lg , jumbotron">
+<a href="exchange.jsp">
+    <button type="button" class="btn btn-primary" id="exchange">Exchange money</button>
+</a>
+<a href="tableCurrency.jsp">
+    <button type="button" class="btn btn-primary" id="actualRates">Show actual rates</button>
+</a>
+<a href="tableExchangeHistory.jsp">
+    <button type="button" class="btn btn-primary" id="exchangesHistory">Show history of exchanges</button>
+</a>
 </div>
 
-<div class="badge-danger">
-    <label id="exchangeDateId" for="ExampleOutput">Kurs na dany dzien:</label>
-    <input type="number" class="form-control" id="EndingValue" disabled>
-</div>
-
-<label for="enteredDate" class="col-2 col-form-label">Wartosc po przewalutowaniu: </label>
-
-<div class="col-10">
-    <input class="form-control" type="text" id="ExampleOutput" disabled>
-</div>
-</div>
-</div>
-
-
-<button type="button" id="Button">Przelicz</button>
-
-<script>
-    var selectedCurrency = $('#ExampleOutput').val($('#enteredCurrency').val());
-    $('#enteredCurrency').click(function () {
-        selectedCurrency;
-    });
-
-    $('#enteredDate').change(function () {
-        $('#exchangeDateId').html('Kurs na dzień: ');
-        $('#exchangeDateId').append($('#enteredDate').val());
-    });
-
-    $('#Button').click(function () {
-        //zapytanie ajaxowe
-        $.ajax({
-            //ta linijka to to co wysyłąmy JQUERT
-            type: "POST",
-            url: "/exchange/",
-            //enteredvalue - ile spisujemy hajsu
-            //enteredDate - data dla ktorej szukamy
-            headers: {
-                // mozna to pominac
-
-                //akceptuje jsona
-                'Accept': 'application/json',
-                //wysyłam cos w postaci jsona
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify({
-                value: $('#enteredValue').val(),
-                date: $('#enteredDate').val(),
-                currency: $('#enteredCurrency').val()
-
-            }),
-
-
-            //ta linijka to to co dostajemy w odpowiedzi czyli REST
-            success: function (result) {
-                console.log(result);
-
-                $('#EndingValue').val(result.rate);
-                $('#ExampleOutput').val(result.money + ' ' + $('#enteredCurrency').val())
-
-            },
-            error: function (result) {
-                console.log(result);
-                alert(result.responseJSON.error);
-            }
-            // error:  function(result){
-
-        })
-    });
-</script>
-
+<jsp:include page="WEB-INF/fragments/footer.jsp"/>
 </body>
 </html>

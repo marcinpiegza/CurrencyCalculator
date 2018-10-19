@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
 
         //to robi to ze haker ktory ma dostep do naszej domeny moze podmienic wartpsci w formularzu
-       // httpSecurity.csrf().disable();
+        httpSecurity.csrf().disable();
     }
 
     @Bean

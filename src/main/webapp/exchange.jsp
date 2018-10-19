@@ -15,6 +15,7 @@
 
 
 <body>
+<jsp:include page="WEB-INF/fragments/header.jsp"/>
 
 
 <style>
@@ -118,5 +119,5 @@
         })
     });
 </script>
-
+<jsp:include page="WEB-INF/fragments/footer.jsp"/>
 </body>
