@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.project.calculator.service.CurrencyExchangeService;
 
 import java.time.LocalDate;
@@ -32,6 +33,24 @@ public class ExchangeViewController {
         model.addAttribute("history",currencyExchangeService.showHistory());
         return "tableExchangeHistory";
     }
+
+//    @GetMapping("/")
+//        public String firstPage(){
+//        return "firstPage";
+//    }
+
+    @PostMapping("/register")
+    public String registrationPage(){
+
+        return "register";
+    }
+
+    @PostMapping("/login")
+    public String loginPage(){
+
+        return "login";
+    }
+
 
 
 

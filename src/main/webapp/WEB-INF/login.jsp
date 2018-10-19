@@ -20,15 +20,15 @@
         <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
     </div>
 
-    <button type="submit" class="btn btn-primary" id="Registration">Registration</button>
+    <button type="submit" class="btn btn-primary" id="Login">Login</button>
 
     <script>
-        $('#Registration').click(function () {
+        $('#Login').click(function () {
             //zapytanie ajaxowe
             $.ajax({
                 //ta linijka to to co wysyłąmy JQUERT
                 type: "POST",
-                url: "/exchange/", // sprawdz + zapisz
+                url: "/exchange/",  // sprawdz
                 //enteredvalue - ile spisujemy hajsu
                 //enteredDate - data dla ktorej szukamy
                 headers: {
@@ -42,7 +42,6 @@
                 data: JSON.stringify({
                     Username: $('#Username').val(),
                     Password: $('#Password').val(),
-
 
                 }),
 
@@ -59,11 +58,11 @@
                     //przy błedzie ma wyswietlic komunikat
                 }
 
-
             })
         });
     </script>
 
-</form>
+
+    </form>
 </body>
 </html>
