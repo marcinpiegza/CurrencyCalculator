@@ -20,10 +20,10 @@
 <a href="exchange.jsp">
     <button type="button" class="btn btn-primary" id="exchange">Exchange money</button>
 </a>
-<a href="tableCurrency.jsp">
+<a href="/getRates">
     <button type="button" class="btn btn-primary" id="actualRates">Show actual rates</button>
 </a>
-<a href="tableExchangeHistory.jsp">
+<a href="/showHistory">
     <button type="button" class="btn btn-primary" id="exchangesHistory">Show history of exchanges</button>
 </a>
 </div>
